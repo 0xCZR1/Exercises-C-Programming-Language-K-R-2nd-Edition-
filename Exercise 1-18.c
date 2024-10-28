@@ -5,7 +5,6 @@
 int getline(char line[], int maxline);
 void copy(char to[], char from[]);
 void removeTrailingSpace(char line[]);
-void reverseArray(char line[], int maxline);
 
 int main() {
     int len;
