@@ -1,21 +1,24 @@
 #include <stdio.h>
-#define TAB  ' '
+#define TAB_WIDTH  4
 
 int main (void) {
-    int c, i, current_pos, spaces_to_add, step, jump;
-    current_pos = 0;
-    step = 0;
-    jump = 0;
-    while (( c = getchar()) != EOF) {
-        ++current_pos;
-        if (current_pos % 4 == 0)
-            jump = step + 4;
-        if (c == '\t') {
-            spaces_to_add = jump - (current_pos % jump);
-            for ( i = jump ; i <= spaces_to_add; i++)
-                putchar(' ');
-        }
-        putchar(c);
+    int c, current_pos = 0, spaces_to_add;
 
+    while ((c =getchar()) != EOF) {
+        if (c == '\t') {
+            spaces_to_add = TAB_WIDTH - (current_pos % TAB_WIDTH);
+            for (int  i = 0; i < spaces_to_add; i++) {
+                putchar(' ');
+                ++current_pos;
+            }
+
+        }
+        else {
+            putchar(c);
+            ++current_pos;
+        }
+        if (c == '\n') {
+            current_pos = 0;
+        }
     }
-}
+    }
